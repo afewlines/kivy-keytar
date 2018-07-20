@@ -17,12 +17,12 @@ change'em in the GameScreen class's static variables if u want
 
 # TODO
 ## many things, friend
-+ add timer
++ add timer *done*
 
-+ add win
++ add win *done*
 
-+ add lose message
++ add lose message *done*
 
-+ add replay
++ add replay *done*
 
 idk sounds good to me
