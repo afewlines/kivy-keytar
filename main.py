@@ -140,9 +140,9 @@ class KeytarApp(App):
 
 if __name__ == '__main__':
     # Config.set('graphics', 'borderless', '1')
-    Config.set('graphics', 'width', '400')
-    Config.set('graphics', 'height', '630')
+    # Config.set('graphics', 'width', '400')
+    # Config.set('graphics', 'height', '630')
     # Config.set('graphics', 'resizable', '0')
-    Config.write()
+    # Config.write()
     KeytarApp().run()
     print('gameOVER')
