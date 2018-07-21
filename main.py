@@ -36,6 +36,7 @@ class GameScreen(BoxLayout):
     screen_tiles = [[], [], [], []]
     current_row = 0
     ttime = 0
+    start_timer = False
 
     def __init__(self, **kwargs):
         super(GameScreen, self).__init__(**kwargs)
@@ -71,10 +72,14 @@ class GameScreen(BoxLayout):
 
     def _on_keypress(self, keyboard, keycode, text, modifiers):
         if not GameScreen.active:
-            print(keycode[1])
             if keycode[1] in ['r', 'spacebar']:
                 self.reset()
             return
+
+        if GameScreen.start_timer:
+            Clock.schedule_interval(self.timer, 0.01)
+            GameScreen.start_timer = False
+
         if keycode[1] in GameScreen.key_binds:
             if GameScreen.board[GameScreen.current_row][GameScreen.key_binds[keycode[1]]] == 1:
                 GameScreen.current_row += 1
@@ -104,7 +109,6 @@ class GameScreen(BoxLayout):
                     Image(source=GameScreen.tiles[GameScreen.screen_tiles[3 - row][tile]]))
 
     def fail(self):
-        print('r i p my dude')
         GameScreen.active = False
         self.grid.clear_widgets()
         self.remove_widget(self.grid)
@@ -113,7 +117,6 @@ class GameScreen(BoxLayout):
         self.add_widget(self._scrCurrent)
 
     def win(self):
-        print('u did it my dude')
         GameScreen.active = False
         self.grid.clear_widgets()
         self.remove_widget(self.grid)
@@ -124,13 +127,13 @@ class GameScreen(BoxLayout):
 
     def reset(self):
         GameScreen.active = True
+        GameScreen.start_timer = True
         GameScreen.current_row = 0
         GameScreen.ttime = 0
         GameScreen.board = Board(50).getBoard()
         self.remove_widget(self._scrCurrent)
         self.add_widget(self.grid)
         self.update_screen()
-        Clock.schedule_interval(self.timer, 0.01)
 
 
 class KeytarApp(App):
@@ -145,4 +148,3 @@ if __name__ == '__main__':
     # Config.set('graphics', 'resizable', '0')
     # Config.write()
     KeytarApp().run()
-    print('gameOVER')
