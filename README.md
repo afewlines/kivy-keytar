@@ -18,11 +18,13 @@ change'em in the GameScreen class's static variables if u want
 # TODO
 ## many things, friend
 + ~~add timer~~ *done*
-
 + ~~add win~~ *done*
-
 + ~~add lose message~~ *done*
-
 + ~~add replay~~ *done*
++ ~~add leaderboard~~ *done*
++ prep for android
+  + touch controls
+  + clean everything up
+
 
 idk sounds good to me
